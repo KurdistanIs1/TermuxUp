@@ -1,0 +1,77 @@
+#!/bin/bash
+sleep 0.5
+clear
+sleep 0.5
+
+# Logo
+logo(){
+clear
+figlet -f small "Anonym-R"
+printf "\e[1;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+printf "\e[1;32m║ \e[1;37mAUTHOR  : Anonym-R             \e[1;32m║     \n"
+printf "\e[1;32m║ \e[1;97mWebSite : https://anonym-r.ga  \e[1;32m║ \n"
+printf "\e[1;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\e[0m"
+echo ""
+}
+
+# Index Page
+index(){
+sleep 0.2
+printf " \e[1;96m>> \e[1;31mSELECT:"
+printf "  \n\n\e[0m \e[1;32m[\e[1;37m01\e[1;32m] \e[1;93mUpdate Termux"
+printf "  \n\e[0m \e[1;32m[\e[1;37m02\e[1;32m] \e[1;93mUpgrade Termux"
+
+#Exit & About
+printf " \n\n\e[0m \e[1;32m[\e[1;37m99\e[1;32m] \e[1;93mAbout Us"
+printf "  \n\e[0m \e[1;32m[\e[1;37m00\e[1;32m] \e[1;93mExit"
+
+read -p $'  \n\n\e[1;31m[\e[0m\e[1;37m+\e[0m\e[1;31m]\e[0m\e[1;92m>> \e[0m\e[1;96m\en' sel
+if [[ $sel == 0 || $sel == 00 ]]; then
+  exit
+elif [[ $sel == 1 || $sel == 01 ]]; then
+  updateTr
+elif [[ $sel == 2 || $sel == 02 ]]; then
+  upgradeTr
+elif [[ $sel == 99 || $sel == 99  ]]; then
+  xdg-open https://anonym-r.ga
+else
+  printf "\n  \e[31m[\e[1;33m~\e[31m] Invalid Options! Try again."
+  sleep 3
+  logo
+  index
+fi
+}
+
+# Update
+updateTr(){
+clear
+logo
+sleep 0.3
+printf " \e[1;96m>> \e[1;31mUpdate Started"
+apt install
+apt update
+pkg install
+pkg update
+clear
+logo
+index
+}
+
+# Upgrade
+upgradeTr(){
+clear
+logo
+sleep 0.3
+printf " \e[1;96m>> \e[1;31mUpgrade Started"
+apt install
+apt upgrade
+pkg install
+pkg upgrade
+clear
+logo
+index
+}
+
+# index
+logo
+index
